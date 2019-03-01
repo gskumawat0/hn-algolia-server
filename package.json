@@ -1,36 +1,36 @@
 {
-  "name": "hn-algolia-server",
-  "version": "1.0.0",
-  "engines": {
-    "node": "11.8.0"
-  },
-  "description": "hn-algolia clone",
-  "main": "index.js",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "connect-flash": "^0.1.1",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.6"
-  },
-  "devDependencies": {
-    "dotenv": "^6.2.0",
-    "nodemon": "^1.18.9"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gskumawat0/hn-algolia.git"
-  },
-  "author": "Gouri Shankar Kumawat <gskumawat555@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gskumawat0/hn-algolia/issues"
-  },
-  "homepage": "https://github.com/gskumawat0/hn-algolia#readme"
+    "name": "hn-algolia-server",
+    "version": "1.0.0",
+    "engines": {
+        "node": "11.8.0"
+    },
+    "description": "hn-algolia clone",
+    "main": "index.js",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "connect-flash": "^0.1.1",
+        "cors": "^2.8.5",
+        "express": "^4.16.4",
+        "jsonwebtoken": "^8.4.0",
+        "mongoose": "^5.4.6"
+    },
+    "devDependencies": {
+        "dotenv": "^6.2.0",
+        "nodemon": "^1.18.9"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gskumawat0/hn-algolia.git"
+    },
+    "author": "Gouri Shankar Kumawat <gskumawat555@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/gskumawat0/hn-algolia/issues"
+    },
+    "homepage": "https://github.com/gskumawat0/hn-algolia#readme"
 }
