@@ -7,11 +7,6 @@ let userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
   password: {
     type: String,
     required: true
@@ -20,7 +15,6 @@ let userSchema = new mongoose.Schema({
 
 userSchema.pre('save', function(next) {
   let user = this;
-  // console.log(this);
   if (!user.isModified('password')) return next();
   bcrypt.hash(user.password, 10).then(function(hashedPassword) {
     user.password = hashedPassword;

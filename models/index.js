@@ -4,10 +4,9 @@ mongoose.Promise = global.Promise;
 mongoose.connect( process.env.DATABASEURL, {
   keepAlive: true,
   useCreateIndex: true,
-//   reconnectTries: Number.MAX_VALUE,
-  // useMongoClient: true,
   useNewUrlParser: true
-});
+})
+.then(()=> console.log('connected'))
+.catch(()=> console.log(process.env.DATABASEURL, 'not connected'));
 
 module.exports.User = require("./user");
-// module.exports.Message = require("./message");

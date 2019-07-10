@@ -20,7 +20,8 @@
     },
     "scripts": {
         "start": "node index.js",
-        "dev": "nodemon  index.js"
+        "dev": "nodemon  index.js",
+        "debug": "nodemon --inspect index.js"
     },
     "repository": {
         "type": "git",

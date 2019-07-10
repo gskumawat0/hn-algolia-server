@@ -2,43 +2,57 @@ const db = require('../models');
 const jwt = require('jsonwebtoken');
 
 
-exports.signup = function(req, res, next) {
-    // console.log(req.body, 23131);
-    const { username, email, password } = req.body;
-    // console.log(username, email, password, `a signup request has arrived`);
-    db.User.create({ username, email, password }).then(function(user) {
+exports.signup = async function(req, res, next) {
+    try {
+        const { email, password } = req.body;
+        let user = await db.User.create({  email, password })
         var token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
-        res.status(200).json({
-            userId: user.id,
-            username: user.username,
-            token
+        return res.json({
+            user: user,
+            token,
+            success: true,
+            message: 'thanks for signup'
         });
-    }).catch(function(err) {
-        res.status(400).json(err);
-    });
+    } catch (err) {
+        if(err.code === 11000){
+            err.message = 'user already exist'
+        }
+        return res.json({
+            message: err.message,
+            success: false
+        })
+    }
 };
 
 
-exports.signin = function(req, res) {
-    // console.log('a signin request has arrived');
-    db.User.findOne({ email: req.body.email }).then(function(user) {
+exports.signin = async function(req, res) {
+    try{
+        let user = await db.User.findOne({ email: req.body.email })
+        if(!user){
+            throw Error('user not found');
+        }
         user.comparePassword(req.body.password, function(err, isMatch) {
             if (isMatch) {
                 var token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY);
-                res.status(200).json({
-                    userId: user.id,
-                    username: user.username,
-                    profileImageUrl: user.profileImageUrl,
-                    token
+                return res.json({
+                    user: user,
+                    token,
+                    message: 'successfully logged in',
+                    success: true
                 });
             }
             else {
-                res.status(400).json({ message: 'Invalid Email/Password.' });
+                throw Error('invalid password')
             }
-        });
-    }).catch(function(err) {
-        res.status(400).json({ message: 'Invalid Email/Password' });
-    });
+        })
+    }
+    catch(err){
+        return res.json({
+            message: err.message,
+            success: false
+        })
+    }
+    
 };
 
 

@@ -1,1 +1,1 @@
-mongod --dbpath=data --nojournal
+mongod --dbpath=data --nojournal --fork --syslog

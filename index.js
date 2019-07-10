@@ -1,11 +1,8 @@
-console.log(process.env.NODE_ENV)
 var express = require("express");
 var app = express();
 var cors = require('cors');
 var bodyParser = require("body-parser");
 var authRoutes = require("./routes/auth");
-// var auth = require('./middleware/auth');
-// var db = require("./models");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }))
