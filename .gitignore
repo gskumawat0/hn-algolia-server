@@ -3,3 +3,4 @@ nodemon.json
 node_modules/*
 .env
 data/*
+nodemon.json
